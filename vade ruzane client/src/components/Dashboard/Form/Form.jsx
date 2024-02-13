@@ -40,9 +40,11 @@ const Form = ({ user, currentId, setCurrentId }) => {
         dispatch(updateHD(currentId, hdData));
       }
     } else if (hdData.age >= 18) {
-      dispatch(setSnackBar(true, "error", "AGE MUST BE OVER 18"));
+      dispatch(setSnackBar(true, "error", "سن بایستی بزرگتر از 18 باشد"));
     } else {
-      dispatch(setSnackBar(true, "error", "NO FILLED OR WRONG DATA"));
+      dispatch(
+        setSnackBar(true, "error", "اطلاعات به صورت صحیح وارد نشده است")
+      );
     }
 
     clear();
@@ -60,29 +62,29 @@ const Form = ({ user, currentId, setCurrentId }) => {
     <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
       <form className="space-y-6" onSubmit={handleSubmit}>
         <h2 className="text-2xl font-bold text-center">
-          {currentId ? "Update" : "Fill in"} Your Health Details
+          {currentId ? "بروزآوری" : "وارد کردن"} اطلاعات سلامتی شما
         </h2>
         <input
           type="number"
           name="age"
-          placeholder="Age"
+          placeholder="سن"
           value={hdData.age}
           onChange={onChange}
           className="block w-full p-3 border border-gray-300 rounded-md"
         />
         <select
-          name="sex"
+          name="جنسیت"
           value={hdData.sex}
           onChange={onChange}
           className="block w-full p-3 border border-gray-300 rounded-md"
         >
-          <option value="male">Male</option>
-          <option value="female">Female</option>
+          <option value="male">مرد</option>
+          <option value="female">زن</option>
         </select>
         <input
           type="number"
           name="weight"
-          placeholder="Weight: kg"
+          placeholder="وزن: kg"
           value={hdData.weight}
           onChange={onChange}
           className="block w-full p-3 border border-gray-300 rounded-md"
@@ -90,7 +92,7 @@ const Form = ({ user, currentId, setCurrentId }) => {
         <input
           type="number"
           name="height"
-          placeholder="Height: cm"
+          placeholder="قد: cm"
           value={hdData.height}
           onChange={onChange}
           className="block w-full p-3 border border-gray-300 rounded-md"
@@ -100,7 +102,7 @@ const Form = ({ user, currentId, setCurrentId }) => {
             className="w-full py-3 bg-blue-500 text-white rounded-md"
             type="submit"
           >
-            Create
+            ایجاد
           </button>
         )}
         {currentId !== 0 && (
@@ -108,7 +110,7 @@ const Form = ({ user, currentId, setCurrentId }) => {
             className="w-full py-3 bg-blue-500 text-white rounded-md"
             type="submit"
           >
-            Update
+            بروزآوری
           </button>
         )}
         <button
@@ -116,7 +118,7 @@ const Form = ({ user, currentId, setCurrentId }) => {
           onClick={clear}
           type="button"
         >
-          Clear
+          پاک کردن
         </button>
       </form>
     </div>

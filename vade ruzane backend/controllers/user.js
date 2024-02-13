@@ -111,7 +111,7 @@ const signup = async (req, res) => {
     const token = jwt.sign(
       { email: newUser.email, name: newUser.name, id: newUser._id },
       "@user",
-      { expiresIn: "1h" }
+      { expiresIn: "12h" }
     );
     // console.log("signup token");
     // console.log(token);

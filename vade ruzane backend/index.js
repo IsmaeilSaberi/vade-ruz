@@ -31,8 +31,8 @@ const userRouter = require("./routes/user.js");
 app.use("/user", userRouter);
 
 // diet Router
-// const dietRouter = require("./routes/diet.js");
-// app.use("/diet", dietRouter);
+const dietRouter = require("./routes/diet.js");
+app.use("/diet", dietRouter);
 
 // connect to mongoDB
 const CONNECTION_URL =

@@ -13,9 +13,9 @@ function Home() {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-4xl font-bold mb-4">Welcome to Home Page</h1>
+      <h1 className="text-4xl font-bold mb-4">به صفحه اصلی خوش آمدید</h1>
       <hr className="my-4" />
-      <h2 className="text-2xl">NewsFeed</h2>
+      <h2 className="text-2xl">اخبار</h2>
       <hr className="my-4 w-3/4" />
       <div className="grid justify-items-center">
         <div className="w-full md:w-3/4">

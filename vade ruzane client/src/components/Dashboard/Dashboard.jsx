@@ -20,9 +20,11 @@ const Dashboard = () => {
   if (!user) {
     return (
       <div className="container mx-auto">
-        <h1 className="text-4xl font-bold p-5">Welcome to Dashboard</h1>
+        <h1 className="text-4xl font-bold p-5">پنل کاربری</h1>
         <div className="my-10">
-          <p className="text-2xl">YOU ARE NOT AUTHORIZED . . .</p>
+          <p className="text-2xl">
+            لطفا وارد حساب کاربری تان شوید یا ثبت نام کنید!
+          </p>
         </div>
       </div>
     );
@@ -31,7 +33,7 @@ const Dashboard = () => {
   if (user?.userInfo?.role !== "ADMIN") {
     return (
       <div className="container mx-auto">
-        <h1 className="text-4xl font-bold p-5">Welcome to Dashboard</h1>
+        <h1 className="text-4xl font-bold p-5">به پنل کاربری تان خوش آمدید!</h1>
         <div className="my-10">
           <HealthDetail user={user} setCurrentId={setCurrentId} />
           <Form user={user} currentId={currentId} setCurrentId={setCurrentId} />
@@ -42,9 +44,12 @@ const Dashboard = () => {
 
   return (
     <div className="container mx-auto">
-      <h1 className="text-4xl font-bold p-5">Welcome to Dashboard</h1>
+      <h1 className="text-4xl font-bold p-5">پنل کاربری</h1>
       <div className="my-10">
-        <p className="text-2xl">ADMIN ARE NOT AUTHORIZED . . .</p>
+        <p className="text-2xl">
+          {" "}
+          لطفا وارد حساب کاربری تان شوید یا ثبت نام کنید!
+        </p>
       </div>
     </div>
   );

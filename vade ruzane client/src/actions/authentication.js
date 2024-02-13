@@ -1,46 +1,51 @@
-import * as api from '../api/index.js';
-import { AUTH } from '../constants/constantTypes.js';
-import { setSnackBar } from './snackBar.js';
+import * as api from "../api/index.js";
+import { AUTH } from "../constants/constantTypes.js";
+import { setSnackBar } from "./snackBar.js";
 // CREATE ACTION CREATORS
 
 // Sign In action
-export const signin = (formData, history) => async (dispatch) => {
-    try {
-        const { data } = await api.signIn(formData);
-        // dispatch AUTH type action with data as payload
-        dispatch({ type: AUTH, payload: data });
+export const signin = (formData, navigate) => async (dispatch) => {
+  try {
+    const { data } = await api.signIn(formData);
+    // dispatch AUTH type action with data as payload
+    dispatch({ type: AUTH, payload: data });
 
-        const user = JSON.parse(localStorage.getItem('userProfile'));
+    const user = JSON.parse(localStorage.getItem("userProfile"));
 
-        if (user?.userInfo?.role === "USER") {
-            // push back from current path to /dashboard
-            history.push('/dashboard');
-        } else {
-            // push back from current path to /admin
-            history.push('/admin');
-        }
-
-        // console.log(data);
-        dispatch(setSnackBar(true, "success", "SUCCESSFULLY SIGNED IN"));
-
-    } catch (error) {
-        console.log(error.message);
-        dispatch(setSnackBar(true, "error", "USER OR PASSWORD NOT CORRECT"));
+    if (user?.userInfo?.role === "USER") {
+      // push back from current path to /dashboard
+      navigate("/dashboard");
+    } else {
+      // push back from current path to /admin
+      navigate("/admin");
     }
+
+    // console.log(data);
+    dispatch(setSnackBar(true, "success", "ورود موفقیت آمیز"));
+  } catch (error) {
+    console.log(error.message);
+    dispatch(setSnackBar(true, "error", "نام کاربری یا رمز عبور صحیح نیست!"));
+  }
 };
 
 // Sign Up action
-export const signup = (formData, history) => async (dispatch) => {
-    try {
-        const { data } = await api.signUp(formData);
+export const signup = (formData, navigate) => async (dispatch) => {
+  try {
+    const { data } = await api.signUp(formData);
 
-        dispatch({ type: AUTH, payload: data });
-        // push back from current path to /authentication
-        history.push('/authentication');
-        // console.log(data);
-        dispatch(setSnackBar(true, "success", "SUCCESSFULLY SIGNED UP"));
-    } catch (error) {
-        console.log(error.message);
-        dispatch(setSnackBar(true, "error", "USER ALLREADY EXIST, PLEASE SIGN IN OR SIGN UP ANOTHER ACCOUNT"));
-    }
+    dispatch({ type: AUTH, payload: data });
+    // push back from current path to /authentication
+    navigate("/authentication");
+    // console.log(data);
+    dispatch(setSnackBar(true, "success", "ثبت نام وفقیت آمیز!"));
+  } catch (error) {
+    console.log(error.message);
+    dispatch(
+      setSnackBar(
+        true,
+        "error",
+        "لطفا با حساب دیگری ثبت نام کنید یا وارد حساب کاربری تان شوید!"
+      )
+    );
+  }
 };

@@ -1,3 +1,15 @@
+@font-face {
+  font-family: shabnam;
+  src: url("./assets/fonts/Shabnam-FD.woff");
+  font-display: block;
+}
+
+html,
+body {
+  font-family: shabnam, sans-serif;
+  direction: rtl;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
